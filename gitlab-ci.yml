@@ -1,0 +1,23 @@
+stages:
+  # - test
+  - build
+  # - deploy
+
+cache:
+  untracked: true
+  paths:
+  - vendor/
+
+build:
+  image: docker:git
+  stage: build
+  variables:
+    DOCKER_DRIVER: overlay
+    WEB_IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $PARITY_TAG .
+    - docker push $PARITY_TAG
+  only:
+    - master
