@@ -18,7 +18,7 @@ build:
 
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build -t $PARITY_TAG .
+    - docker build -t $PARITY_TAG -f Dockerfile .
     - docker push $PARITY_TAG
   only:
     - dev
