@@ -22,4 +22,4 @@ build:
     - docker push $PARITY_TAG
   only:
     - dev
-    - tag
+    - tags
