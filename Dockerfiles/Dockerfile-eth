@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 MAINTAINER Ajay Joseph <ajay@hatio.in>
 WORKDIR /build
 #ENV for build TAG
@@ -12,22 +12,16 @@ RUN apt-get update && \
         build-essential \
         # add-apt-repository
         software-properties-common \
-        make \
+        make \ 
         curl \
         wget \
         git \
         g++ \
         gcc \
-        libc6 \
-        libc6-dev \
-        binutils \
         file \
-        cmake3 \
-        openssl \
-        libssl-dev \
+        cmake \
         libudev-dev \
         pkg-config \
-        dpkg-dev \
         libudev-dev &&\
 # install rustup
  curl https://sh.rustup.rs -sSf | sh -s -- -y && \
